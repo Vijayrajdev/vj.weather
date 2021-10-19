@@ -37,7 +37,7 @@ body {
 
 input {
   background-color: #607d8b;
-  padding: 24px 0px 12px 0px !important;
+  padding: 8px !important;
   width: 80%;
   box-sizing: border-box;
   border: none !important;

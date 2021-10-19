@@ -4,8 +4,8 @@ const submitButton = document.querySelector("#input-submit")
 const weatherContainer = document.querySelector(".weather-info")
 const weatherDetailsContainer = document.querySelector(".weather-details")
 const suggestionList = document.querySelector(".suggestion")
-const d = new Date()
-console.log(locationInput, suggestionList);
+const inputField = document.querySelector('.input')
+const date = new Date()
 
 // Templates
 // Weather info
@@ -18,7 +18,7 @@ const weatherInfo = (location) => {
     </h1>
     <div class="d-flex flex-column mr-3">
       <h2 class="mt-3 mb-0">${location.name}</h2>
-      <small>${d.toDateString()}</small>
+      <small>${date.toDateString()}</small>
     </div>
     <div class="d-flex flex-column text-center">
       <img
@@ -64,6 +64,7 @@ const fetchWeather = async (c) => {
     weatherContainer.innerHTML = " "
     weatherDetailsContainer.innerHTML = " "
 
+
     const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${c}&appid=ab87c853e98b4a1aa5aaa47a72e4e7d4`)
     const data = await weather.json()
     console.log(data);
@@ -83,13 +84,14 @@ const fetchWeather = async (c) => {
         node.innerHTML = weatherInfo(data)
         weatherContainer.appendChild(node)
 
-
         // Creating Weather-details
         let element = document.createElement('div')
         element.innerHTML = weatherDetails(data)
         weatherDetailsContainer.appendChild(element)
     }
-    locationInput.value = " "
+
+    // Clearing input
+    inputField.reset()
 
 }
 
